@@ -1,0 +1,95 @@
+[gd_scene format=4 uid="uid://pm03wkmceo5f"]
+
+[ext_resource type="Script" uid="uid://k0pehp6pvn74" path="res://Scenes/playerhouse.gd" id="1_3jr7h"]
+[ext_resource type="Texture2D" uid="uid://bbshi2ieu4mwf" path="res://tilesheet.png" id="1_okrnj"]
+[ext_resource type="Script" uid="uid://c1vf6tw5382wq" path="res://Scenes/ground.gd" id="3_iqtyj"]
+[ext_resource type="PackedScene" uid="uid://bx4f8eduwv2n8" path="res://Scenes/stairs.tscn" id="4_iqtyj"]
+[ext_resource type="PackedScene" uid="uid://dh3iy5w48n802" path="res://Scenes/downstairs.tscn" id="5_xi0mm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n87ef"]
+texture = ExtResource("1_okrnj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3jr7h"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 193
+sources/0 = SubResource("TileSetAtlasSource_n87ef")
+
+[node name="HouseGround" type="Node2D" unique_id=1252372725 node_paths=PackedStringArray("current_floor")]
+script = ExtResource("1_3jr7h")
+current_floor = NodePath("Ground")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=507074796]
+
+[node name="Floor" type="Label" parent="UI" unique_id=260372573]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -479.0
+offset_right = -418.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1169627179 node_paths=PackedStringArray("next")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAAEAAQAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAEAAAAFAAAAAAAEAAAAAAAFAAAAAAADAAAAAAAFAAAAAAACAAAAAAAFAAAAAAABAAAAAAAFAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAACAAIAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_3jr7h")
+script = ExtResource("3_iqtyj")
+next = NodePath("../Floor 1")
+
+[node name="Stairs" parent="Ground" unique_id=1684381058 instance=ExtResource("4_iqtyj")]
+position = Vector2(96, 128)
+monitoring = true
+
+[node name="Floor 1" type="TileMapLayer" parent="." unique_id=867616262 node_paths=PackedStringArray("next", "prev")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAABAAMAAAAEAAAAAAABAAIAAAAEAAAAAAABAAEAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAFAAAAAAACAAEAAAAEAAAAAAACAAIAAAAEAAAAAAACAAMAAAAEAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAADAAMAAAAEAAAAAAADAAIAAAAEAAAAAAADAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAAEAAAAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAQAAAAFAAAAAAADAAAAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_3jr7h")
+script = ExtResource("3_iqtyj")
+next = NodePath("../Floor 2")
+prev = NodePath("../Ground")
+
+[node name="Stairs2" parent="Floor 1" unique_id=784094395 instance=ExtResource("4_iqtyj")]
+position = Vector2(96, 128)
+
+[node name="Downstairs2" parent="Floor 1" unique_id=77467456 instance=ExtResource("5_xi0mm")]
+position = Vector2(32, 128)
+
+[node name="Floor 2" type="TileMapLayer" parent="." unique_id=1653423809 node_paths=PackedStringArray("prev")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAABAAMAAAADAAAAAAABAAIAAAADAAAAAAABAAEAAAADAAAAAAABAAAAAAAFAAAAAAACAAAAAAAFAAAAAAACAAEAAAADAAAAAAACAAIAAAADAAAAAAACAAMAAAADAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAADAAMAAAADAAAAAAADAAIAAAADAAAAAAADAAEAAAADAAAAAAADAAAAAAAFAAAAAAAEAAAAAAAFAAAAAAAEAAEAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAQAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_3jr7h")
+script = ExtResource("3_iqtyj")
+prev = NodePath("../Floor 1")
+
+[node name="Downstairs" parent="Floor 2" unique_id=850729509 instance=ExtResource("5_xi0mm")]
+position = Vector2(32, 128)

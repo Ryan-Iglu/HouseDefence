@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://do0rb15ubw7r7"]
+
+[ext_resource type="Script" uid="uid://edwcqgk47gqs" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://c2fxu4eb2iis7" path="res://icon.svg" id="1_hghv2"]
+[ext_resource type="Script" uid="uid://bbc6xkdptj40j" path="res://Scripts/stats.gd" id="2_afpow"]
+
+[sub_resource type="Resource" id="Resource_287tu"]
+script = ExtResource("2_afpow")
+health = 100.0
+damage = 10.0
+movement_speed = 200.0
+acceleration = 1000.0
+friction = 500.0
+metadata/_custom_type_script = "uid://bbc6xkdptj40j"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afpow"]
+size = Vector2(144, 142)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=127624354]
+modulate = Color(1, 0.49411765, 1, 1)
+collision_mask = 193
+script = ExtResource("1_1f0kj")
+stats = SubResource("Resource_287tu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=548829630]
+texture = ExtResource("1_hghv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=453060394]
+shape = SubResource("RectangleShape2D_1f0kj")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=981365658]
+collision_mask = 193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=700801145]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_afpow")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

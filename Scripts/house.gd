@@ -1,4 +1,1 @@
-extends Node2D
-
-
-@export var health: float = 100.0
+extends Area2D

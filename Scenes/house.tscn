@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://pm03wkmceo5f"]
 
 [ext_resource type="Script" uid="uid://k0pehp6pvn74" path="res://Scenes/playerhouse.gd" id="1_3jr7h"]
-[ext_resource type="Texture2D" uid="uid://bbshi2ieu4mwf" path="res://tilesheet.png" id="1_okrnj"]
+[ext_resource type="Texture2D" uid="uid://bbshi2ieu4mwf" path="res://Assets/tilesheet.png" id="1_okrnj"]
 [ext_resource type="Script" uid="uid://c1vf6tw5382wq" path="res://Scenes/ground.gd" id="3_iqtyj"]
-[ext_resource type="PackedScene" uid="uid://bx4f8eduwv2n8" path="res://Scenes/stairs.tscn" id="4_iqtyj"]
-[ext_resource type="PackedScene" uid="uid://dh3iy5w48n802" path="res://Scenes/downstairs.tscn" id="5_xi0mm"]
+[ext_resource type="PackedScene" uid="uid://bx4f8eduwv2n8" path="res://Scenes/depreciated/stairs.tscn" id="4_iqtyj"]
+[ext_resource type="PackedScene" uid="uid://dh3iy5w48n802" path="res://Scenes/depreciated/downstairs.tscn" id="5_xi0mm"]
+[ext_resource type="PackedScene" uid="uid://cuwitivfb77pe" path="res://Scenes/player.tscn" id="6_bu6dc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n87ef"]
 texture = ExtResource("1_okrnj")
@@ -93,3 +94,6 @@ prev = NodePath("../Floor 1")
 
 [node name="Downstairs" parent="Floor 2" unique_id=850729509 instance=ExtResource("5_xi0mm")]
 position = Vector2(32, 128)
+
+[node name="Player" parent="." unique_id=964956301 instance=ExtResource("6_bu6dc")]
+position = Vector2(72.99999, 74.99999)

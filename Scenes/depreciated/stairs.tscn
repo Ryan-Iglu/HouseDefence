@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bx4f8eduwv2n8"]
 
-[ext_resource type="Script" uid="uid://hd5mb07gr0ha" path="res://stairs.gd" id="1_qbift"]
-[ext_resource type="Texture2D" uid="uid://3p6lwy6kswq0" path="res://Houseplaceholder.png" id="2_tl8cb"]
+[ext_resource type="Script" uid="uid://hd5mb07gr0ha" path="res://Scripts/stairs.gd" id="1_qbift"]
+[ext_resource type="Texture2D" uid="uid://3p6lwy6kswq0" path="res://Assets/Houseplaceholder.png" id="2_tl8cb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idtik"]
 size = Vector2(36, 36)

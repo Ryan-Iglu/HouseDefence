@@ -14,7 +14,7 @@ func get_damage() -> float:
 	return stats.damage
 	
 func take_damage(damage: float) -> void:
-	print("player takes ", damage, " damage")
+	print(self, damage, " damage, and has ", stats.health, " remaining.")
 	stats.health = stats.health - damage
 	if stats.health <= 0:
 		queue_free()

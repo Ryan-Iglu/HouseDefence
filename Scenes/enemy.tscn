@@ -19,9 +19,9 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afpow"]
 size = Vector2(144, 142)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=127624354]
+[node name="Enemy" type="CharacterBody2D" unique_id=127624354 groups=["Enemy"]]
 modulate = Color(1, 0.49411765, 1, 1)
-collision_mask = 193
+collision_mask = 195
 script = ExtResource("1_1f0kj")
 stats = SubResource("Resource_287tu")
 
@@ -32,7 +32,7 @@ texture = ExtResource("1_hghv2")
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=981365658]
-collision_mask = 193
+collision_mask = 195
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=700801145]
 position = Vector2(-1, 0)

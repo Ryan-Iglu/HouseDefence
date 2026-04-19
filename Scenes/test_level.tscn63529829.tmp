@@ -3,11 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b5dv5vosye4jb" path="res://Assets/spritesheettiles.png" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://cuwitivfb77pe" path="res://Scenes/player.tscn" id="2_eglq2"]
 [ext_resource type="PackedScene" uid="uid://do0rb15ubw7r7" path="res://Scenes/enemy.tscn" id="3_rsyfn"]
-[ext_resource type="Script" uid="uid://k0pehp6pvn74" path="res://Scenes/playerhouse.gd" id="4_2yvf5"]
-[ext_resource type="Texture2D" uid="uid://bbshi2ieu4mwf" path="res://Assets/tilesheet.png" id="5_3ihge"]
-[ext_resource type="Script" uid="uid://c1vf6tw5382wq" path="res://Scenes/ground.gd" id="6_akkqd"]
-[ext_resource type="PackedScene" uid="uid://bx4f8eduwv2n8" path="res://Scenes/depreciated/stairs.tscn" id="7_8v7by"]
-[ext_resource type="PackedScene" uid="uid://dh3iy5w48n802" path="res://Scenes/depreciated/downstairs.tscn" id="8_1rqgg"]
+[ext_resource type="PackedScene" uid="uid://pm03wkmceo5f" path="res://Scenes/house.tscn" id="4_rsyfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1c2mv"]
 texture = ExtResource("1_gojnm")
@@ -22,46 +18,6 @@ navigation_layer_0/layers = 1
 custom_data_layer_0/name = ""
 custom_data_layer_0/type = 0
 sources/0 = SubResource("TileSetAtlasSource_1c2mv")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n87ef"]
-texture = ExtResource("5_3ihge")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-12:0/0 = 0
-13:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_3jr7h"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 64
-physics_layer_0/collision_mask = 193
-sources/0 = SubResource("TileSetAtlasSource_n87ef")
 
 [node name="Test_level" type="Node2D" unique_id=346955159]
 
@@ -78,56 +34,5 @@ position = Vector2(556, 333)
 position = Vector2(873, 303)
 target = NodePath("../Player")
 
-[node name="House" type="Node2D" parent="." unique_id=1252372725 node_paths=PackedStringArray("current_floor")]
+[node name="House" parent="." unique_id=1252372725 instance=ExtResource("4_rsyfn")]
 position = Vector2(477, 256)
-script = ExtResource("4_2yvf5")
-current_floor = NodePath("Ground")
-
-[node name="UI" type="CanvasLayer" parent="House" unique_id=507074796]
-
-[node name="Floor" type="Label" parent="House/UI" unique_id=260372573]
-unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -479.0
-offset_right = -418.0
-offset_bottom = 23.0
-grow_horizontal = 2
-
-[node name="Ground" type="TileMapLayer" parent="House" unique_id=1169627179 node_paths=PackedStringArray("next")]
-tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAAEAAQAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAEAAAAFAAAAAAAEAAAAAAAFAAAAAAADAAAAAAAFAAAAAAACAAAAAAAFAAAAAAABAAAAAAAFAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAACAAIAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAA=")
-tile_set = SubResource("TileSet_3jr7h")
-script = ExtResource("6_akkqd")
-next = NodePath("../Floor 1")
-
-[node name="Stairs" parent="House/Ground" unique_id=1684381058 instance=ExtResource("7_8v7by")]
-position = Vector2(96, 128)
-monitoring = true
-
-[node name="Floor 1" type="TileMapLayer" parent="House" unique_id=867616262 node_paths=PackedStringArray("next", "prev")]
-tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAABAAMAAAAEAAAAAAABAAIAAAAEAAAAAAABAAEAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAFAAAAAAACAAEAAAAEAAAAAAACAAIAAAAEAAAAAAACAAMAAAAEAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAADAAMAAAAEAAAAAAADAAIAAAAEAAAAAAADAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAAEAAAAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAQAAAAFAAAAAAADAAAAAAAFAAAAAAA=")
-enabled = false
-tile_set = SubResource("TileSet_3jr7h")
-script = ExtResource("6_akkqd")
-next = NodePath("../Floor 2")
-prev = NodePath("../Ground")
-
-[node name="Stairs2" parent="House/Floor 1" unique_id=784094395 instance=ExtResource("7_8v7by")]
-visible = false
-position = Vector2(96, 128)
-
-[node name="Downstairs2" parent="House/Floor 1" unique_id=77467456 instance=ExtResource("8_1rqgg")]
-visible = false
-position = Vector2(32, 128)
-
-[node name="Floor 2" type="TileMapLayer" parent="House" unique_id=1653423809 node_paths=PackedStringArray("prev")]
-tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAABAAMAAAADAAAAAAABAAIAAAADAAAAAAABAAEAAAADAAAAAAABAAAAAAAFAAAAAAACAAAAAAAFAAAAAAACAAEAAAADAAAAAAACAAIAAAADAAAAAAACAAMAAAADAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAADAAMAAAADAAAAAAADAAIAAAADAAAAAAADAAEAAAADAAAAAAADAAAAAAAFAAAAAAAEAAAAAAAFAAAAAAAEAAEAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAQAAAAFAAAAAAA=")
-enabled = false
-tile_set = SubResource("TileSet_3jr7h")
-script = ExtResource("6_akkqd")
-prev = NodePath("../Floor 1")
-
-[node name="Downstairs" parent="House/Floor 2" unique_id=850729509 instance=ExtResource("8_1rqgg")]
-visible = false
-position = Vector2(32, 128)

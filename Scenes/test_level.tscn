@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c1vf6tw5382wq" path="res://Scenes/ground.gd" id="6_akkqd"]
 [ext_resource type="PackedScene" uid="uid://bx4f8eduwv2n8" path="res://Scenes/depreciated/stairs.tscn" id="7_8v7by"]
 [ext_resource type="PackedScene" uid="uid://dh3iy5w48n802" path="res://Scenes/depreciated/downstairs.tscn" id="8_1rqgg"]
+[ext_resource type="PackedScene" uid="uid://2iygts80oro" path="res://Scenes/day_night_cycle.tscn" id="9_3ihge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1c2mv"]
 texture = ExtResource("1_gojnm")
@@ -63,6 +64,15 @@ physics_layer_0/collision_layer = 64
 physics_layer_0/collision_mask = 193
 sources/0 = SubResource("TileSetAtlasSource_n87ef")
 
+[sub_resource type="Gradient" id="Gradient_3ihge"]
+offsets = PackedFloat32Array(0, 0.4005682, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.4744318, 0.4744318, 0.4744318, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_akkqd"]
+gradient = SubResource("Gradient_3ihge")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Test_level" type="Node2D" unique_id=346955159]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=578577019]
@@ -95,13 +105,24 @@ offset_right = -418.0
 offset_bottom = 23.0
 grow_horizontal = 2
 
+[node name="Cave 1" type="TileMapLayer" parent="House" unique_id=1578846472 node_paths=PackedStringArray("next", "prev")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAAEAAQAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAEAAAAFAAAAAAAEAAAAAAAFAAAAAAADAAAAAAAFAAAAAAACAAAAAAAFAAAAAAABAAAAAAAFAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAACAAIAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_3jr7h")
+script = ExtResource("6_akkqd")
+next = NodePath("../Floor 1")
+prev = NodePath(".")
+
+[node name="Stairs" parent="House/Cave 1" unique_id=1684381058 instance=ExtResource("7_8v7by")]
+position = Vector2(96, 128)
+monitoring = true
+
 [node name="Ground" type="TileMapLayer" parent="House" unique_id=1169627179 node_paths=PackedStringArray("next")]
 tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAAFAAAAAAACAAQAAAAFAAAAAAADAAQAAAAFAAAAAAAEAAQAAAAFAAAAAAAEAAMAAAAFAAAAAAAEAAIAAAAFAAAAAAAEAAEAAAAFAAAAAAAEAAAAAAAFAAAAAAADAAAAAAAFAAAAAAACAAAAAAAFAAAAAAABAAAAAAAFAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAACAAIAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_3jr7h")
 script = ExtResource("6_akkqd")
 next = NodePath("../Floor 1")
 
-[node name="Stairs" parent="House/Ground" unique_id=1684381058 instance=ExtResource("7_8v7by")]
+[node name="Stairs" parent="House/Ground" unique_id=1611539260 instance=ExtResource("7_8v7by")]
 position = Vector2(96, 128)
 monitoring = true
 
@@ -131,3 +152,9 @@ prev = NodePath("../Floor 1")
 [node name="Downstairs" parent="House/Floor 2" unique_id=850729509 instance=ExtResource("8_1rqgg")]
 visible = false
 position = Vector2(32, 128)
+
+[node name="CanvasModulate" parent="." unique_id=1409392583 instance=ExtResource("9_3ihge")]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=954027317]
+position = Vector2(541, 320)
+texture = SubResource("GradientTexture2D_akkqd")
